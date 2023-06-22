@@ -1,0 +1,19 @@
+---
+- name: Install base software
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Install required system packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - zsh
+          - software-properties-common
+          - wget
+          - jq
+          - qemu-guest-agent
+        state: latest
+        update_cache: true
